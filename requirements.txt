@@ -1,6 +1,6 @@
 streamlit
 pandas
-numpy==19.2.3
+numpy
 sklearn
 io
 os
