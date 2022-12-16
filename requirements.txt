@@ -3,6 +3,3 @@ pandas
 numpy
 scikit-learn
 imbalanced-learn
-pyxlsb
-pyperclip
-xsel
