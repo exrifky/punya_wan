@@ -4,4 +4,4 @@ numpy
 scikit-learn
 imbalanced-learn
 pyxlsb
-xclip
+pyperclip
