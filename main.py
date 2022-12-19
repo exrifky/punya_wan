@@ -10,22 +10,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
-from imblearn.over_sampling import SMOTE, ADASYN,BorderlineSMOTE
-
-
-from pyxlsb import open_workbook as open_xlsb
-from io import BytesIO
-def to_excel(df):
-    output = BytesIO()
-    writer = pd.ExcelWriter(output, engine='xlsxwriter')
-    df.to_excel(writer, index=False, sheet_name='Sheet1')
-    workbook = writer.book
-    worksheet = writer.sheets['Sheet1']
-    format1 = workbook.add_format({'num_format': '0.00'})
-    worksheet.set_column('A:A', None, format1)
-    writer.save()
-    processed_data = output.getvalue()
-    return processed_data
+from imblearn.over_sampling import SMOTE, ADASYN,BorderlineSMOT
 
 
 data = pd.read_csv('fix4.csv')
