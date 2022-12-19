@@ -306,20 +306,6 @@ elif option == 'Prediksi Berkelompok':
                                        min_samples_split=5,
                                        n_estimators=162)
         model1.fit(X_train, y_train)
-        
-        dataPred = pd.DataFrame(MinMaxScaler().fit_transform(dataPred),
-                            columns=dataPred.columns, index=dataPred.index)
-        prediksi_kelompok = (model1.predict(dataPred))
         st.write("data pred2")
         st.write(dataPred)
-        df_prediksi = pd.DataFrame(prediksi_kelompok, columns=['Lama_Kuliah'])
-        df_prediksi.loc[df_prediksi['Lama_Kuliah'] == 3, 'Kelulusan'] = 'Tepat Waktu'
-        df_prediksi.loc[df_prediksi['Lama_Kuliah'] == 4, 'Kelulusan'] = 'Tepat Waktu'
-        df_prediksi.loc[df_prediksi['Lama_Kuliah'] == 5, 'Kelulusan'] = 'Tidak Tepat Waktu'
-        df_prediksi.loc[df_prediksi['Lama_Kuliah'] == 6, 'Kelulusan'] = 'Tidak Tepat Waktu'
-        df_prediksi.loc[df_prediksi['Lama_Kuliah'] == 7, 'Kelulusan'] = 'Tidak Tepat Waktu'
-        row_prediksi = pd.concat([df3[['Nama Lengkap']], df_prediksi], axis=1)
-        st.subheader("Hasil Prediksi Mahasiswa")
-        st.write(row_prediksi)
-        st.text('')
-
+       
