@@ -308,4 +308,8 @@ elif option == 'Prediksi Berkelompok':
         model1.fit(X_train, y_train)
         st.write("data pred2")
         st.write(dataPred)
-       
+        
+        dataPred = pd.DataFrame(MinMaxScaler().fit_transform(dataPred),
+                            columns=dataPred.columns, index=dataPred.index)
+        
+
