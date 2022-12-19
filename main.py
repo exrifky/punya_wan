@@ -297,27 +297,10 @@ elif option == 'Prediksi Berkelompok':
         st.write("data pred")
         st.write(dataPred)
         # build the scaler model
-        data = pd.read_csv('fix4.csv')
-        X = data.drop('Lama_Kuliah', axis=1)
-        y = data['Lama_Kuliah']
-
-        # build the scaler model
-        X = pd.DataFrame(MinMaxScaler().fit_transform(X), columns=X.columns, index=X.index)
-        X_resampled, y_resampled = SMOTE().fit_resample(X, y)
-        X_resampled = X_resampled.drop(['Jenis_TPA', 'Jenis_Beasiswa', 'Motivasi_Beasiswa'], axis=1)
-
-        X_train, X_test, y_train, y_test = train_test_split(X_resampled, y_resampled, test_size=0.2)
-        # fit the model
-        model1 = RandomForestClassifier(bootstrap=True,
-                                       max_depth=None,
-                                       max_features=2,
-                                       min_samples_leaf=2,
-                                       min_samples_split=5,
-                                       n_estimators=162)
         st.write("X_Traing")
         st.write(X_train)
         model1.fit(X_train, y_train)
-
+        
         dataPred = pd.DataFrame(MinMaxScaler().fit_transform(dataPred),
                             columns=dataPred.columns, index=dataPred.index)
         prediksi_kelompok = (model1.predict(dataPred))
