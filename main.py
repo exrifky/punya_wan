@@ -301,12 +301,16 @@ elif option == 'Prediksi Berkelompok':
         st.write(dataPred)
         i = 0
         while i < dataPred.shape[0]:
-            st.write(dataPred.iloc[[i]])
             prediksi_kelompok = (model.predict(dataPred.iloc[[i]].to_numpy()))
-            if (prediksi_kelompok < 5):
+            dfHasil = pd.DataFrame(prediksi_kelompok)
+            st.write(pd.concat(([dfHasil, df3[['Nama Lengkap']].iloc[[i]]])))
+
+            if (prediksi_kelompok <= 4 ):
                 st.write('Tepat Waktu')
             else:
                 st.write("Tidak Tepat Waktu")
             i += 1
+
+
 
 
