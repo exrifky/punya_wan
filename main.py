@@ -299,9 +299,14 @@ elif option == 'Prediksi Berkelompok':
                             columns=dataPred.columns, index=dataPred.index)
         st.write("data pred2 min max")
         st.write(dataPred)
-        st.write(dataPred.iloc[[2]].to_numpy())
-        prediksi_kelompok = (model.predict(dataPred.iloc[[2]].to_numpy()))
-        if(prediksi_kelompok < 5): st.write('Tepat Waktu')
-        else: st.write("Tidak Tepat Waktu")
+        i = 0
+        while i < dataPred.shape[0]:
+            st.write(dataPred.iloc[[i]])
+            prediksi_kelompok = (model.predict(dataPred.iloc[[i]].to_numpy()))
+            if (prediksi_kelompok < 5):
+                st.write('Tepat Waktu')
+            else:
+                st.write("Tidak Tepat Waktu")
+            i += 1
 
 
