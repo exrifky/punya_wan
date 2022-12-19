@@ -292,12 +292,8 @@ elif option == 'Prediksi Berkelompok':
         st.subheader("Data Mahasiswa")
         st.write(df3)
         
-      dataPred= df3[['Mayor', 'MK', 'JK', 'BD', 'AP', 'Nilai Tes Bidang',
-                    'Nilai Setara IPK', 'Status PT', 'Motivasi Studi',
-                    'Pengalaman Penelitian', 'Rencana Riset', 'Komunikasi',
-                    'Problem Solving', 'Literature Review', 'Team Work',
-                    'Nilai Interview', 'Jenis TOEFL', 'Nilai Setara TOEFL',
-                    'Nilai TPA', 'Nilai Total']]
+
+        dataPred= df3[['Mayor','MK','JK','BD','AP','Nilai Tes Bidang','Nilai Setara IPK','Status PT','Motivasi Studi','Pengalaman Penelitian','Rencana Riset','Komunikasi','Problem Solving','Literature Review','Team Work','Nilai Interview','Jenis TOEFL','Nilai Setara TOEFL','Nilai TPA','Nilai Total']]
         st.write("data pred")
         st.write(dataPred)
         # build the scaler model
@@ -335,4 +331,3 @@ elif option == 'Prediksi Berkelompok':
         st.subheader("Hasil Prediksi Mahasiswa")
         st.write(row_prediksi)
         st.text('')
-
