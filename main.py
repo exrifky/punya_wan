@@ -292,13 +292,14 @@ elif option == 'Prediksi Berkelompok':
         st.subheader("Data Mahasiswa")
         st.write(df3)
         
-        dataPred= df3[['Mayor', 'MK', 'JK', 'BD', 'AP', 'Nilai Tes Bidang',
+      dataPred= df3[['Mayor', 'MK', 'JK', 'BD', 'AP', 'Nilai Tes Bidang',
                     'Nilai Setara IPK', 'Status PT', 'Motivasi Studi',
                     'Pengalaman Penelitian', 'Rencana Riset', 'Komunikasi',
                     'Problem Solving', 'Literature Review', 'Team Work',
                     'Nilai Interview', 'Jenis TOEFL', 'Nilai Setara TOEFL',
                     'Nilai TPA', 'Nilai Total']]
-
+        st.write("data pred")
+        st.write(dataPred)
         # build the scaler model
         data = pd.read_csv('fix4.csv')
         X = data.drop('Lama_Kuliah', axis=1)
@@ -317,6 +318,7 @@ elif option == 'Prediksi Berkelompok':
                                        min_samples_leaf=2,
                                        min_samples_split=5,
                                        n_estimators=162)
+        st.write("X_Traing")
         st.write(X_train)
         model1.fit(X_train, y_train)
 
