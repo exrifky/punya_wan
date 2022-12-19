@@ -299,3 +299,17 @@ elif option == 'Prediksi Berkelompok':
                     'Nilai Interview', 'Jenis TOEFL', 'Nilai Setara TOEFL',
                     'Nilai TPA', 'Nilai Total']]
         st.write(data)
+        
+             # build the scaler model
+        data = pd.DataFrame(MinMaxScaler().fit_transform(data),
+                            columns=data.columns, index=data.index)
+        prediksi_kelompok = (model.predict(data))
+        df_prediksi = pd.DataFrame(prediksi_kelompok, columns=['Lama_Kuliah'])
+        df_prediksi.loc[df_prediksi['Lama_Kuliah'] == 3, 'Kelulusan'] = 'Tepat Waktu'
+        df_prediksi.loc[df_prediksi['Lama_Kuliah'] == 4, 'Kelulusan'] = 'Tepat Waktu'
+        df_prediksi.loc[df_prediksi['Lama_Kuliah'] == 5, 'Kelulusan'] = 'Tidak Tepat Waktu'
+        df_prediksi.loc[df_prediksi['Lama_Kuliah'] == 6, 'Kelulusan'] = 'Tidak Tepat Waktu'
+        df_prediksi.loc[df_prediksi['Lama_Kuliah'] == 7, 'Kelulusan'] = 'Tidak Tepat Waktu'
+        row_prediksi = pd.concat([df3[['Nama Lengkap']], df_prediksi], axis=1)
+        st.subheader("Hasil Prediksi Mahasiswa")
+        st.write(row_prediksi)
