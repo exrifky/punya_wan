@@ -321,6 +321,8 @@ elif option == 'Prediksi Berkelompok':
         dataPred = pd.DataFrame(MinMaxScaler().fit_transform(dataPred),
                             columns=dataPred.columns, index=dataPred.index)
         prediksi_kelompok = (model1.predict(dataPred))
+        st.write("data pred2")
+        st.write(dataPred)
         df_prediksi = pd.DataFrame(prediksi_kelompok, columns=['Lama_Kuliah'])
         df_prediksi.loc[df_prediksi['Lama_Kuliah'] == 3, 'Kelulusan'] = 'Tepat Waktu'
         df_prediksi.loc[df_prediksi['Lama_Kuliah'] == 4, 'Kelulusan'] = 'Tepat Waktu'
@@ -331,5 +333,4 @@ elif option == 'Prediksi Berkelompok':
         st.subheader("Hasil Prediksi Mahasiswa")
         st.write(row_prediksi)
         st.text('')
-        st.write("data pred")
-        st.write(dataPred)
+
