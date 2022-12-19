@@ -290,40 +290,18 @@ elif option == 'Prediksi Berkelompok':
         df3.replace(to_replace="B / Baik Sekali", value="2", inplace=True)
         df3.replace(to_replace="A / Unggul", value="3", inplace=True)
         st.subheader("Data Mahasiswa")
-        st.write(df3)
-        
+        st.write(df3)  
 
         dataPred= df3[['Mayor','MK','JK','BD','AP','Nilai Tes Bidang','Nilai Setara IPK','Status PT','Motivasi Studi','Pengalaman Penelitian','Rencana Riset','Komunikasi','Problem Solving','Literature Review','Team Work','Nilai Interview','Jenis TOEFL','Nilai Setara TOEFL','Nilai TPA','Nilai Total']]
-        st.write("data pred")
+        st.write("data pred1")
         st.write(dataPred)
-        # build the scaler model
-        st.write("X_Traing")
-        st.write(X_train)
-        model1 = RandomForestClassifier(bootstrap=True,
-                                       max_depth=None,
-                                       max_features=2,
-                                       min_samples_leaf=2,
-                                       min_samples_split=5,
-                                       n_estimators=162)
-        model1.fit(X_train, y_train)
-        st.write("data pred2")
-        st.write(dataPred)
-        
         dataPred = pd.DataFrame(MinMaxScaler().fit_transform(dataPred),
                             columns=dataPred.columns, index=dataPred.index)
-        prediksi_kelompok = (model1.predict(dataPred))
-
-        prediksi_kelompok = (model1.predict(dataPred.iloc[1]))
-        df_prediksi = pd.DataFrame(prediksi_kelompok, columns=['Lama_Kuliah'])
-        df_prediksi.loc[df_prediksi['Lama_Kuliah'] == 3, 'Kelulusan'] = 'Tepat Waktu'
-        df_prediksi.loc[df_prediksi['Lama_Kuliah'] == 4, 'Kelulusan'] = 'Tepat Waktu'
-        df_prediksi.loc[df_prediksi['Lama_Kuliah'] == 5, 'Kelulusan'] = 'Tidak Tepat Waktu'
-        df_prediksi.loc[df_prediksi['Lama_Kuliah'] == 6, 'Kelulusan'] = 'Tidak Tepat Waktu'
-        df_prediksi.loc[df_prediksi['Lama_Kuliah'] == 7, 'Kelulusan'] = 'Tidak Tepat Waktu'
-        row_prediksi = pd.concat([df3[['Nama Lengkap']], df_prediksi], axis=1)
-        st.subheader("Hasil Prediksi Mahasiswa")
-        st.write(row_prediksi)
-        st.text('')
-
+        st.write("data pred2 min max")
+        st.write(dataPred)
+        st.write(dataPred.iloc[[2]].to_numpy())
+        prediksi_kelompok = (model.predict(dataPred.iloc[[2]].to_numpy()))
+        if(prediksi_kelompok < 5): st.write('Tepat Waktu')
+        else: st.write("Tidak Tepat Waktu")
 
 
