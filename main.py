@@ -311,5 +311,7 @@ elif option == 'Prediksi Berkelompok':
         
         dataPred = pd.DataFrame(MinMaxScaler().fit_transform(dataPred),
                             columns=dataPred.columns, index=dataPred.index)
-        
+        prediksi_kelompok = (model1.predict(dataPred))
+
+
 
