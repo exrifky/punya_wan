@@ -331,3 +331,5 @@ elif option == 'Prediksi Berkelompok':
         st.subheader("Hasil Prediksi Mahasiswa")
         st.write(row_prediksi)
         st.text('')
+        st.write("data pred")
+        st.write(dataPred)
