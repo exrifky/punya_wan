@@ -291,3 +291,11 @@ elif option == 'Prediksi Berkelompok':
         df3.replace(to_replace="A / Unggul", value="3", inplace=True)
         st.subheader("Data Mahasiswa")
         st.write(df3)
+        
+        data= df3[['Mayor', 'MK', 'JK', 'BD', 'AP', 'Nilai Tes Bidang',
+                    'Nilai Setara IPK', 'Status PT', 'Motivasi Studi',
+                    'Pengalaman Penelitian', 'Rencana Riset', 'Komunikasi',
+                    'Problem Solving', 'Literature Review', 'Team Work',
+                    'Nilai Interview', 'Jenis TOEFL', 'Nilai Setara TOEFL',
+                    'Nilai TPA', 'Nilai Total']]
+        st.write(data)
