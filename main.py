@@ -317,6 +317,7 @@ elif option == 'Prediksi Berkelompok':
                                        min_samples_leaf=2,
                                        min_samples_split=5,
                                        n_estimators=162)
+        st.write(X_train)
         model1.fit(X_train, y_train)
 
         dataPred = pd.DataFrame(MinMaxScaler().fit_transform(dataPred),
