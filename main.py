@@ -291,27 +291,3 @@ elif option == 'Prediksi Berkelompok':
         df3.replace(to_replace="A / Unggul", value="3", inplace=True)
         st.subheader("Data Mahasiswa")
         st.write(df3)
-
-
-        data= df3[['Mayor', 'MK', 'JK', 'BD', 'AP', 'Nilai Tes Bidang',
-                    'Nilai Setara IPK', 'Status PT', 'Motivasi Studi',
-                    'Pengalaman Penelitian', 'Rencana Riset', 'Komunikasi',
-                    'Problem Solving', 'Literature Review', 'Team Work',
-                    'Nilai Interview', 'Jenis TOEFL', 'Nilai Setara TOEFL',
-                    'Nilai TPA', 'Nilai Total']]
-
-        # build the scaler model
-        data = pd.DataFrame(MinMaxScaler().fit_transform(data),
-                            columns=data.columns, index=data.index)
-        prediksi_kelompok = (model.predict(data))
-        df_prediksi = pd.DataFrame(prediksi_kelompok, columns=['Lama_Kuliah'])
-        df_prediksi.loc[df_prediksi['Lama_Kuliah'] == 3, 'Kelulusan'] = 'Tepat Waktu'
-        df_prediksi.loc[df_prediksi['Lama_Kuliah'] == 4, 'Kelulusan'] = 'Tepat Waktu'
-        df_prediksi.loc[df_prediksi['Lama_Kuliah'] == 5, 'Kelulusan'] = 'Tidak Tepat Waktu'
-        df_prediksi.loc[df_prediksi['Lama_Kuliah'] == 6, 'Kelulusan'] = 'Tidak Tepat Waktu'
-        df_prediksi.loc[df_prediksi['Lama_Kuliah'] == 7, 'Kelulusan'] = 'Tidak Tepat Waktu'
-        row_prediksi = pd.concat([df3[['Nama Lengkap']], df_prediksi], axis=1)
-        st.subheader("Hasil Prediksi Mahasiswa")
-        st.write(row_prediksi)
-        st.text('')
-
